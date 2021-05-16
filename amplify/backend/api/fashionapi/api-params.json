@@ -1,0 +1,44 @@
+{
+    "paths": [
+        {
+            "name": "/news",
+            "lambdaFunction": "fashionLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/news"
+        },
+        {
+            "name": "/populate",
+            "lambdaFunction": "fashionLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/populate"
+        }
+    ],
+    "resourceName": "fashionapi",
+    "apiName": "fashionapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "fashionLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-fashionappwebadmin-dev-160157-authRole",
+        "unAuthRoleName": "amplify-fashionappwebadmin-dev-160157-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "fashionLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "4de67a5e"
+}

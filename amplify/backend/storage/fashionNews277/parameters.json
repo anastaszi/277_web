@@ -1,0 +1,7 @@
+{
+    "tableName": "fashionNews277",
+    "partitionKeyName": "uuid",
+    "partitionKeyType": "S",
+    "sortKeyName": "category",
+    "sortKeyType": "S"
+}

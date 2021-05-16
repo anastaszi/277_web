@@ -1,0 +1,14 @@
+{
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "uuidLayer",
+      "version": 1
+    },
+    {
+      "type": "ProjectLayer",
+      "resourceName": "cors",
+      "version": 1
+    }
+  ]
+}
