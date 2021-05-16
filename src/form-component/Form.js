@@ -4,19 +4,20 @@ import bsCustomFileInput from 'bs-custom-file-input';
 
 import { Storage, API, Auth } from 'aws-amplify';
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form'
 
 import './Form.css';
+import { Spinner } from 'react-bootstrap';
 
 
 const FormComponent = props => {
     const [title, setTitle] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
-    const [text, setText] = useState("")
+    const [text, setText] = useState("");
+    const [loading, setLoading] = useState(false);
     const formRef = useRef(null);
     const [option, setOption] = useState(null);
     const [options, setOptions] = useState(["Choose Category", "Blockchain", "ML", "AR", "BigData", "ComputerVision"]);
@@ -32,27 +33,21 @@ const FormComponent = props => {
 
     const onSubmit = (event) => {
         let name = uuidv4();
+        setLoading(true)
         submitFile(name).then(res => {
             postData(process.env.REACT_APP_CLOUDFRONT + name).then((res)=> console.log(res)).catch(e => console.log(e));
-            console.log(process.env.REACT_APP_RESTAPI + name)
+            setLoading(false);
         }).
-        catch(e => console.log(e));
+        catch(e => {
+            console.log(e);
+            setLoading(false);
+        }
+            );
         console.log(title);
         console.log(text);
         event.preventDefault();
         formRef.current.reset();
     }
-
-    const createItem = (img) => {
-        let item = {
-            title: title,
-            author: "Anastasia",
-            category: option, 
-            imgurl: img, 
-            text: text
-        }
-        return axios.put(process.env.REACT_APP_RESTAPI+'/news', item);
-    } 
 
     async function postData(img) { 
         let data =  {
@@ -117,7 +112,10 @@ const FormComponent = props => {
                 <Row>
                     <Col sm={"auto"} className="ml-auto">
                     <Button variant="info" size="lg" onClick={onSubmit}>
-                        Submit
+                        {loading ? <Spinner animation="border" role="status">
+                                        <span className="sr-only">Loading...</span>
+                                    </Spinner> 
+                                : 'Submit'}
                     </Button>
                     </Col>
 
