@@ -17,6 +17,7 @@ const FormComponent = props => {
     const [title, setTitle] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [text, setText] = useState("");
+    const [author, setAuthor] = useState("");
     const [loading, setLoading] = useState(false);
     const formRef = useRef(null);
     const [option, setOption] = useState(null);
@@ -52,7 +53,7 @@ const FormComponent = props => {
     async function postData(img) { 
         let data =  {
             title: title,
-            author: "Anastasia",
+            author: author,
             category: option, 
             imgurl: img, 
             text: text
@@ -82,6 +83,14 @@ const FormComponent = props => {
                     <Form.Label>Title</Form.Label>
                     <Form.Control placeholder="Enter title" 
                     onChange={(e) => setTitle(e.target.value)}
+                    />
+                </Form.Group>
+
+
+                <Form.Group controlId="author">
+                    <Form.Label>Author</Form.Label>
+                    <Form.Control placeholder="Enter author" 
+                    onChange={(e) => setAuthor(e.target.value)}
                     />
                 </Form.Group>
 
