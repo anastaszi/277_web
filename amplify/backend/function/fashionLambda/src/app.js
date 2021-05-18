@@ -111,113 +111,38 @@ app.get(path, function(req, res) {
 });
 
 /********************************
- * HTTP Get method for list objects *
+ * HTTP Get method for get all titles for specific category *
  ********************************/
-/*
-app.get(path + hashKeyPath, function(req, res) {
+
+ app.get("/categories/:type", function(req, res) {
   var condition = {}
-  condition[partitionKeyName] = {
+
+  condition.category = {
     ComparisonOperator: 'EQ'
   }
 
-  if (userIdPresent && req.apiGateway) {
-    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
-  } else {
-    try {
-      condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
+  try {
+    condition.category['AttributeValueList'] = [ convertUrlType(req.params['type'], "S") ];
+  } catch(err) {
+    res.statusCode = 500;
+    res.json({error: 'Wrong column type ' + err});
   }
+
 
   let queryParams = {
     TableName: tableName,
+    IndexName:  'category-index',
     KeyConditions: condition
+
   }
 
-  dynamodb.query(queryParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err});
-    } else {
-      res.json(data.Items);
-    }
-  });
+
+  dynamodb.query(queryParams, function(err, data) {
+    if (err) res.json({ err })
+    else res.json({ data })
+  })
 });
-*/
-/*****************************************
- * HTTP Get method for get single object *
- *****************************************/
-/*
-app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
-  var params = {};
-  if (userIdPresent && req.apiGateway) {
-    params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-  } else {
-    params[partitionKeyName] = req.params[partitionKeyName];
-    try {
-      params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
-  if (hasSortKey) {
-    try {
-      params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
 
-  let getItemParams = {
-    TableName: tableName,
-    Key: params
-  }
-
-  dynamodb.get(getItemParams,(err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err.message});
-    } else {
-      if (data.Item) {
-        res.json(data.Item);
-      } else {
-        res.json(data) ;
-      }
-    }
-  });
-});*/
-
-
-
-
-/************************************
-* HTTP post method for insert object *
-*************************************/
-/*
-app.post(path, function(req, res) {
-
-  if (userIdPresent) {
-    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-  }
-
-  let putItemParams = {
-    TableName: tableName,
-    Item: req.body
-  }
-  dynamodb.put(putItemParams, (err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: err, url: req.url, body: req.body});
-    } else{
-      res.json({success: 'post call succeed!', url: req.url, data: data})
-    }
-  });
-});
-*/
 /**************************************
 * HTTP remove method to delete object *
 ***************************************/

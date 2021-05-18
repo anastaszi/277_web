@@ -22,7 +22,7 @@
         },
         "fashionLambda": {
           "deploymentBucketName": "amplify-fashionappwebadmin-dev-160157-deployment",
-          "s3Key": "amplify-builds/fashionLambda-5868694a546b4a484c6b-build.zip"
+          "s3Key": "amplify-builds/fashionLambda-715653374c437958514a-build.zip"
         },
         "cors": {
           "deploymentBucketName": "amplify-fashionappwebadmin-dev-160157-deployment",
