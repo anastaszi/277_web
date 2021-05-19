@@ -15,6 +15,14 @@
                 "open": true
             },
             "policyResourceName": "/populate"
+        },
+        {
+            "name": "/categories",
+            "lambdaFunction": "fashionLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/categories"
         }
     ],
     "resourceName": "fashionapi",
@@ -27,8 +35,8 @@
     "privacy": {
         "auth": 0,
         "unauth": 0,
-        "authRoleName": "amplify-fashionappwebadmin-dev-160157-authRole",
-        "unAuthRoleName": "amplify-fashionappwebadmin-dev-160157-unauthRole"
+        "authRoleName": "amplify-fashionappwebadmin-master-210134-authRole",
+        "unAuthRoleName": "amplify-fashionappwebadmin-master-210134-unauthRole"
     },
     "dependsOn": [
         {
@@ -40,5 +48,5 @@
             ]
         }
     ],
-    "uuid": "4de67a5e"
+    "uuid": "a130efc3"
 }

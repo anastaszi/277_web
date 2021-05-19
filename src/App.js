@@ -5,7 +5,7 @@ import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {FormComponent} from './form-component';
+import {NewsComponent} from './news-component';
 import './App.css'
 
 import awsconfig from './aws-exports';
@@ -18,7 +18,7 @@ const App = () => (
        <Container className="h-100 flex-column">
               <Row className="flex-fill">
         <Col>
-          <FormComponent />
+          <NewsComponent />
         </Col>
       </Row>
       <Row>

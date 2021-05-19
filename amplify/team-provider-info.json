@@ -1,4 +1,64 @@
 {
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fashionappwebadmin-master-210134-authRole",
+      "UnauthRoleArn": "arn:aws:iam::096360437466:role/amplify-fashionappwebadmin-master-210134-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::096360437466:role/amplify-fashionappwebadmin-master-210134-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-fashionappwebadmin-master-210134-deployment",
+      "UnauthRoleName": "amplify-fashionappwebadmin-master-210134-unauthRole",
+      "StackName": "amplify-fashionappwebadmin-master-210134",
+      "StackId": "arn:aws:cloudformation:us-east-1:096360437466:stack/amplify-fashionappwebadmin-master-210134/e5bb8a60-b689-11eb-9271-0a4f97d4255b",
+      "AmplifyAppId": "d2b6g6xmfhelha"
+    },
+    "categories": {
+      "auth": {
+        "fashionappwebadmin870f9f62": {}
+      },
+      "function": {
+        "fashionLambda": {
+          "deploymentBucketName": "amplify-fashionappwebadmin-master-210134-deployment",
+          "s3Key": "amplify-builds/fashionLambda-715653374c437958514a-build.zip"
+        },
+        "uuidLayer": {
+          "deploymentBucketName": "amplify-fashionappwebadmin-master-210134-deployment",
+          "s3Key": "amplify-builds/uuidLayer-build.zip"
+        },
+        "cors": {
+          "deploymentBucketName": "amplify-fashionappwebadmin-master-210134-deployment",
+          "s3Key": "amplify-builds/cors-build.zip"
+        }
+      }
+    },
+    "nonCFNdata": {
+      "function": {
+        "uuidLayer": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "Ja/zBDnWkzIAExSBU+8hL670LfYHbA/B7jZyHIC/zVg="
+            }
+          }
+        },
+        "cors": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "ILy++JK+ptZJ9H2I6khQwHI4q9/DNprui62p3eKC0V4="
+            }
+          }
+        }
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-fashionappwebadmin-dev-160157-authRole",

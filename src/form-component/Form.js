@@ -21,7 +21,7 @@ const FormComponent = props => {
     const [loading, setLoading] = useState(false);
     const formRef = useRef(null);
     const [option, setOption] = useState(null);
-    const [options, setOptions] = useState(["Choose Category", "Blockchain", "ML", "AR", "BigData", "ComputerVision"]);
+    const options = ["Choose Category", "Blockchain", "ML", "AR", "BigData", "ComputerVision"];
 
 
     useEffect(() => {
@@ -36,7 +36,9 @@ const FormComponent = props => {
         let name = uuidv4();
         setLoading(true)
         submitFile(name).then(res => {
-            postData(process.env.REACT_APP_CLOUDFRONT + name).then((res)=> console.log(res)).catch(e => console.log(e));
+            postData(process.env.REACT_APP_CLOUDFRONT + name).then((res)=> {
+                props.update()
+            }).catch(e => console.log(e));
             setLoading(false);
         }).
         catch(e => {
@@ -97,7 +99,7 @@ const FormComponent = props => {
                 <Form.Group controlId="categories">
                     <Form.Label>Category</Form.Label>
                     <Form.Control as="select" onChange={updateOption} className="mb-2">
-                        {options.map(elem => <option>{elem}</option>)}
+                        {options.map((elem, index) => <option key={"opt" + index}>{elem}</option>)}
                     </Form.Control>
                 </Form.Group>
 
