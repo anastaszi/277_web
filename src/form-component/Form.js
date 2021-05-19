@@ -21,7 +21,7 @@ const FormComponent = props => {
     const [loading, setLoading] = useState(false);
     const formRef = useRef(null);
     const [option, setOption] = useState(null);
-    const options = ["Choose Category", "Blockchain", "ML", "AR", "BigData", "ComputerVision"];
+    const options = ["Choose Category", "Blockchain", "ML", "AR", "AI", "BigData", "ComputerVision"];
 
 
     useEffect(() => {
